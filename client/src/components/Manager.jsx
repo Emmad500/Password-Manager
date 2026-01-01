@@ -171,7 +171,7 @@ const Manager = () => {
                                 <input
                                     value={form.username}
                                     onChange={handleChange}
-                                    placeholder='john@example.com'
+                                    placeholder='username@gmail.com'
                                     className='w-full px-4 py-3 rounded-lg bg-white border border-zinc-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-100 outline-none transition-all text-zinc-900 placeholder-zinc-400'
                                     type="text"
                                     name="username"
