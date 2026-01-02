@@ -25,8 +25,11 @@ mongoose.connect(mongoURI)
 
 // Routes
 
+// Routes
+const router = express.Router();
+
 // GET all passwords
-app.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const passwords = await Password.find();
         res.json(passwords);
@@ -36,7 +39,7 @@ app.get('/', async (req, res) => {
 });
 
 // POST a new password
-app.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
     const { url, username, password } = req.body;
     const newPassword = new Password({
         url,
@@ -53,7 +56,7 @@ app.post('/', async (req, res) => {
 });
 
 // PUT (Update) a password
-app.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     console.log("PUT Request received for ID:", req.params.id);
     console.log("Request Body:", req.body);
     const { url, username, password } = req.body;
@@ -76,7 +79,7 @@ app.put('/:id', async (req, res) => {
 });
 
 // DELETE a password
-app.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deletedPassword = await Password.findByIdAndDelete(req.params.id);
         if (!deletedPassword) return res.status(404).json({ message: 'Password not found' });
@@ -85,6 +88,9 @@ app.delete('/:id', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
+app.use('/api', router);
+app.use('/', router);
 
 if (process.env.NODE_ENV !== 'production') {
     app.listen(port, () => {
