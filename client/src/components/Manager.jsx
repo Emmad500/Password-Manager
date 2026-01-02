@@ -171,7 +171,7 @@ const Manager = () => {
                                 <input
                                     value={form.username}
                                     onChange={handleChange}
-                                    placeholder='username@gmail.com'
+                                    placeholder='Enter Username'
                                     className='w-full px-4 py-3 rounded-lg bg-white border border-zinc-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-100 outline-none transition-all text-zinc-900 placeholder-zinc-400'
                                     type="text"
                                     name="username"
@@ -186,7 +186,7 @@ const Manager = () => {
                                     <input
                                         value={form.password}
                                         onChange={handleChange}
-                                        placeholder='••••••••'
+                                        placeholder='Enter Password'
                                         className='w-full px-4 py-3 rounded-lg bg-white border border-zinc-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-100 outline-none transition-all text-zinc-900 placeholder-zinc-400'
                                         type={passwordVisible ? "text" : "password"}
                                         name="password"
@@ -245,12 +245,12 @@ const Manager = () => {
                         <div className="bg-white rounded-xl border border-zinc-200 shadow-sm overflow-hidden">
                             <div className="overflow-x-auto">
                                 <table className="w-full text-left">
-                                    <thead className="bg-zinc-50 border-b border-zinc-200">
+                                    <thead className="bg-violet-600 text-white">
                                         <tr>
-                                            <th className='py-4 px-6 text-sm font-semibold text-zinc-700 uppercase tracking-wider w-1/2'>Website</th>
-                                            <th className='py-4 px-6 text-sm font-semibold text-zinc-700 uppercase tracking-wider w-1/4'>Username</th>
-                                            <th className='py-4 px-6 text-sm font-semibold text-zinc-700 uppercase tracking-wider w-1/6'>Password</th>
-                                            <th className='py-4 px-6 text-sm font-semibold text-zinc-700 uppercase tracking-wider text-center'>Actions</th>
+                                            <th className='py-4 px-6 text-sm font-semibold uppercase tracking-wider w-1/2 rounded-tl-xl'>Website</th>
+                                            <th className='py-4 px-6 text-sm font-semibold uppercase tracking-wider w-1/4'>Username</th>
+                                            <th className='py-4 px-6 text-sm font-semibold uppercase tracking-wider w-1/6'>Password</th>
+                                            <th className='py-4 px-6 text-sm font-semibold uppercase tracking-wider text-center rounded-tr-xl'>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-zinc-100">
