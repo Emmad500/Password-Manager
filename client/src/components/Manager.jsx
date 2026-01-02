@@ -7,10 +7,11 @@ const Manager = () => {
     const [passwordArray, setPasswordArray] = useState([])
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [editingId, setEditingId] = useState(null);
+    const host = import.meta.env.PROD ? "/api" : "http://localhost:3001";
 
     const getPasswords = async () => {
         try {
-            let req = await fetch("http://localhost:3001/")
+            let req = await fetch(`${host}/`)
             let passwords = await req.json()
             setPasswordArray(passwords)
         } catch (error) {
@@ -40,12 +41,12 @@ const Manager = () => {
         if (form.url.length > 3 && form.username.length > 3 && form.password.length > 3) {
             console.log("Saving password...", form);
             try {
-                let url = "http://localhost:3001/";
+                let url = `${host}/`;
                 let method = "POST";
 
                 if (editingId) {
                     console.log("Updating existing password with ID:", editingId);
-                    url = "http://localhost:3001/" + editingId;
+                    url = `${host}/` + editingId;
                     method = "PUT";
                 }
 
@@ -99,7 +100,7 @@ const Manager = () => {
         let c = confirm("Do you really want to delete this password?")
         if (c) {
             try {
-                let res = await fetch("http://localhost:3001/" + id, { method: "DELETE" })
+                let res = await fetch(`${host}/` + id, { method: "DELETE" })
                 if (res.ok) {
                     setPasswordArray(passwordArray.filter(item => item._id !== id))
                     toast.success('Password deleted!', {
